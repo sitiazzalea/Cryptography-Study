@@ -1,5 +1,3 @@
-package StudyCryptography;
-
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -77,15 +75,43 @@ public class CryptoTool {
         return plainText;
     }
     
+    public static byte[] encryptCBC(String algorithm, byte[] plainText, SecretKey key, byte[] iv)
+    throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException,
+    BadPaddingException, IllegalBlockSizeException{
+        Cipher cipher = Cipher.getInstance(algorithm);
+        cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(iv));
+        byte[] cipherText = cipher.doFinal(plainText);
+        return cipherText;
+    }
+    
+    public static byte[] decryptCBC(String algorithm, byte[] cipherText, SecretKey key, byte[] iv)
+    throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException,
+    BadPaddingException, IllegalBlockSizeException{
+        Cipher cipher = Cipher.getInstance(algorithm);
+        cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
+        byte[] plainText = cipher.doFinal(cipherText);
+        return plainText;
+    }
     
     public static void main(String[] arg) throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
     BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException{
         String plainText = "putih kucing edan";
         SecretKey key = CryptoTool.generateKey(128);
+
+//      Testing AES CBC
         String algorithm = "AES/ECB/PKCS5Padding";
         byte[] cipherText = encrypt(algorithm, convStr2Bin(plainText), key);
         byte[] decryptedText = decrypt(algorithm, cipherText, key);
-        System.out.println("cipher text (hex encoded): " + convBin2Hex(cipherText));
-        System.out.println("decrypted text: " + convBin2Str(decryptedText));
+//        System.out.println("cipher text (hex encoded): " + convBin2Hex(cipherText));
+//        System.out.println("decrypted text: " + convBin2Str(decryptedText));
+        
+//      Testing AES CBC
+        String algorithmCBC = "AES/CBC/PKCS5Padding";
+        byte[] iv = generateRandom(16);
+        byte[] cipherTextCBC = encryptCBC(algorithmCBC, convStr2Bin(plainText), key, iv);
+        byte[] decryptedTextCBC = decryptCBC(algorithmCBC, cipherTextCBC, key, iv);
+        System.out.println("IV: " + convBin2Hex(iv));
+        System.out.println("Cipher text with CBC mode of operation (Hex encoded): " + convBin2Hex(cipherTextCBC));
+        System.out.println("Decryped text with CBC mode of operation: " + convBin2Str(decryptedTextCBC));
     }   
 }
