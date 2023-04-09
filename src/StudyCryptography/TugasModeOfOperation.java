@@ -1,5 +1,6 @@
 package StudyCryptography;
 
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 /**
@@ -62,6 +63,32 @@ public class TugasModeOfOperation {
         return result;
     }
 
+    public static byte[] encryptCTR(byte[] plaintext, byte[] key, byte[] nonce) throws Exception {
+ //        assume there's no padding
+        if (plaintext.length % key.length != 0) {
+            throw new Exception("plaintext length is not the multiple of block size");
+        }
+        
+        final int ctrSize = 2; //because we use short 
+        byte[] result = new byte[plaintext.length];
+        
+        short ctr = 0;
+        byte[] bytesCTR;
+        for (int i = 0; i < plaintext.length; i += key.length) { //the key length is the block size
+            bytesCTR = ByteBuffer.allocate(ctrSize).putShort(ctr).array();
+            byte[] nonceCTR = new byte[key.length];
+            System.arraycopy(nonce, 0, nonceCTR, 0, nonce.length);        
+            System.arraycopy(bytesCTR, 0, nonceCTR, nonce.length, bytesCTR.length);        
+            byte[] blockCipherResult = blockCipher(nonceCTR, key);
+            for (int j = 0; j < blockCipherResult.length; j++) {
+                result[i+j] = (byte)(plaintext[i+j] ^ blockCipherResult[j]);            
+            }
+             
+            ctr++; 
+        }
+        return result;
+    }
+    
     public static void main(String[] arg) throws Exception{
     
         byte[] plainText = {2, 98, 85, 90, 2, 98, 85, 90, 2, 98, 85, 90};
@@ -81,6 +108,16 @@ public class TugasModeOfOperation {
         for (byte rc : resultCBC) {
             System.out.print(rc + " ");
         }
+        
+//      testing ctr
+        byte[] nonce = {24, 22};//nonce for ctr mode
+        byte[] resultCTR = encryptCTR(plainText, key, nonce);
+        System.out.println("");
+        System.out.println("CTR encrypted");
+        for (byte rct : resultCTR) {
+            System.out.print(rct + " ");
+        }
+        
         
     }
     
