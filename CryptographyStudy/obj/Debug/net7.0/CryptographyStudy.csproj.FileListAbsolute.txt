@@ -1,0 +1,15 @@
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\bin\Debug\net7.0\CryptographyStudy.exe
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\bin\Debug\net7.0\CryptographyStudy.deps.json
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\bin\Debug\net7.0\CryptographyStudy.runtimeconfig.json
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\bin\Debug\net7.0\CryptographyStudy.dll
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\bin\Debug\net7.0\CryptographyStudy.pdb
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.csproj.AssemblyReference.cache
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.AssemblyInfoInputs.cache
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.AssemblyInfo.cs
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.csproj.CoreCompileInputs.cache
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.dll
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\refint\CryptographyStudy.dll
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.pdb
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\CryptographyStudy.genruntimeconfig.cache
+C:\Users\Zaza\Documents\CryptographyInCS\CryptographyStudy\obj\Debug\net7.0\ref\CryptographyStudy.dll
